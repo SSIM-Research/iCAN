@@ -1,1 +1,2 @@
-# Git_iCAN
+# iCAN
+Incremental Collaborative and Adversarial Net
