@@ -22,7 +22,6 @@ class Contrast_ReLU_activate(nn.Module):
 
         self.dom_func_weight = nn.Parameter(torch.ones(1),requires_grad=True)
         self.dom_func_bias = Variable(torch.FloatTensor([0]).cuda())
-        # nn.Parameter(torch.zeros(1),requires_grad=True)
 
         self.weight_scale = initWeightScale
         self.add_bias = initBias
@@ -217,7 +216,6 @@ class ICAN(nn.Module):
 
             return class_pred, dom_pred.squeeze(), disc_w, weight, bias
 
-            #
         else:
             # test and pseudo label
 
