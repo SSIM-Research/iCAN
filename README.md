@@ -1,2 +1,2 @@
 # iCAN
-Incremental Collaborative and Adversarial Net
+Incremental Collaborative and Adversarial Net (CVPR 2018)
