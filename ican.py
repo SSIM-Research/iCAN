@@ -6,8 +6,6 @@ import math
 import copy
 from collections import OrderedDict
 from torch.autograd import Variable
-# from torch.autograd import Variable
-# from gradient_reversal_layer import *
 
 NUM_CLASS = 31
 BATCH_SIZE = 16
@@ -43,20 +41,8 @@ class Contrast_ReLU_activate(nn.Module):
         zeros_var = b
         f_weight = torch.max(act_weight, zeros_var)
 
-        # add source 1 result
-        # max_weight = f_weight + dom_label
-
-        # Maximise function to one(source)
-        # ones_var = Variable(torch.FloatTensor([1]*len(max_weight)).cuda())
-
-        # out_weight = torch.min(max_weight, ones_var)
-        # out_weight = f_weight
-
         final_weight = f_weight
-        # torch.max(out_weight, init_weight).narrow(0,0,int(BATCH_SIZE/2))
-
-        # final_weight = Variable(torch.FloatTensor([1]*int(BATCH_SIZE/2)).cuda())
-
+        
         return final_weight, w.squeeze().data[0], b.squeeze().data[0]
 
 
@@ -67,18 +53,14 @@ class Discriminator_Weights_Adjust(nn.Module):
         super(Discriminator_Weights_Adjust, self).__init__()
 
         self.main_var = Variable(torch.FloatTensor([0]).cuda())
-        # nn.Parameter(torch.zeros(1),requires_grad=True)
         self.l1_var = nn.Parameter(torch.zeros(1),requires_grad=True)
         self.l2_var = nn.Parameter(torch.zeros(1),requires_grad=True)
-        # self.l3_var = nn.Parameter(torch.zeros(1),requires_grad=True)
 
         self.k_var = Variable(torch.FloatTensor([-0.9]).cuda())
 
         self.l1_rev = Variable(torch.ones(1).cuda())
         self.l2_rev = Variable(torch.ones(1).cuda())
         self.l3_rev = Variable(torch.ones(1).cuda())
-
-        # nn.Parameter(torch.zeros(1),requires_grad=True)
 
     def forward(self, main_weight, l1_weight, l2_weight, l3_weight):
 
@@ -97,14 +79,6 @@ class Discriminator_Weights_Adjust(nn.Module):
             l2_rev[0] = -1
         if w_l3.data[0] < 0:
             l3_rev[0] = -1
-
-        # if (w_l3.data[0] < LAST_WEIGHT_LIMIT):
-        #     total_exceed = w_l3 - LAST_WEIGHT_LIMIT
-        #     w_l1_ratio = w_l1 / (w_l1 + w_l2) 
-        #     w_l2_ratio = w_l2 / (w_l1 + w_l2)
-        #     self.l1_var += total_exceed * w_l1_ratio
-        #     self.l2_var += total_exceed * w_l2_ratio
-        #     w_l3 = (w_main - self.k_var) - w_l1 - w_l2
 
         return torch.abs(w_main), torch.abs(w_l1), torch.abs(w_l2), torch.abs(w_l3), l1_rev, l2_rev, l3_rev
 
@@ -165,15 +139,11 @@ class ICAN(nn.Module):
         self.l1_bottleneck = nn.DataParallel(self.l1_bottleneck)
         self.l2_bottleneck = nn.DataParallel(self.l2_bottleneck)
         self.l3_bottleneck = nn.DataParallel(self.l3_bottleneck)
-        # self.st_bottleneck = nn.DataParallel(self.st_bottleneck)
-        # self.target_bottleneck = nn.DataParallel(self.target_bottleneck)
 
         self.domain_pred = nn.DataParallel(self.domain_pred)
         self.domain_pred_l1 = nn.DataParallel(self.domain_pred_l1)
         self.domain_pred_l2 = nn.DataParallel(self.domain_pred_l2)
         self.domain_pred_l3 = nn.DataParallel(self.domain_pred_l3)
-
-        # self._initialize_weights()
 
     def forward(self, cond, x1, x2=None, l=None, dom_label=None, 
                 init_weight=None, init_w_main=None, init_w_l1=None,
