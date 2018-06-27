@@ -10,7 +10,7 @@ Please Cite:
 
 @inproceedings{zhang2018collaborative,  
 &nbsp;&nbsp;title={Collaborative and Adversarial Network for Unsupervised domain adaptation},  
-&nbsp;&nbsp;author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong}, 
+&nbsp;&nbsp;author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong},  
 &nbsp;&nbsp;booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},  
 &nbsp;&nbsp;pages={3801-3809},  
 &nbsp;&nbsp;year={2018}   
