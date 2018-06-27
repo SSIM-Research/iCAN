@@ -9,9 +9,9 @@ The code is written with Pytorch 0.2.0. Please let me know if you want the code 
 Please Cite:
 
 @inproceedings{zhang2018collaborative,  
-  title={Collaborative and Adversarial Network for Unsupervised domain adaptation},  
-  author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong}   
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},  
-  pages={3801-3809},  
-  year={2018}   
+&nbsp;&nbsp;title={Collaborative and Adversarial Network for Unsupervised domain adaptation},  
+&nbsp;&nbsp;author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong}, 
+&nbsp;&nbsp;booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},  
+&nbsp;&nbsp;pages={3801-3809},  
+&nbsp;&nbsp;year={2018}   
 }
