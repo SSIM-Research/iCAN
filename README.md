@@ -8,10 +8,10 @@ The code is written with Pytorch 0.2.0. Please let me know if you want the code 
 
 Please Cite:
 
-@inproceedings{zhang2018collaborative,
-  title={Collaborative and Adversarial Network for Unsupervised domain adaptation},
-  author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong}
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages={3801-3809},
-  year={2018}
+@inproceedings{zhang2018collaborative,  
+  title={Collaborative and Adversarial Network for Unsupervised domain adaptation},  
+  author={Zhang, Weichen and Ouyang, Wanli and Li, Wen and Xu, Dong}   
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},  
+  pages={3801-3809},  
+  year={2018}   
 }
