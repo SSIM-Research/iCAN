@@ -9,7 +9,7 @@ from torch.autograd import Variable
 
 NUM_CLASS = 31
 BATCH_SIZE = 16
-INI_DISC_WEIGHT_SCALE = -200
+INI_DISC_WEIGHT_SCALE = 200**4
 INI_DISC_BIAS = 0.5
 LAST_WEIGHT_LIMIT = -2
 
@@ -34,7 +34,7 @@ class Contrast_ReLU_activate(nn.Module):
         dom_prob = F.sigmoid(dom_res).squeeze()
         dom_variance = torch.abs(dom_prob - 0.5)
 
-        act_weight = 0.8 - (w * dom_variance)**4  + b
+        act_weight = 0.8 - w * dom_variance**4  + b
         
         # Minimise function to zero(target)
         zeros_var = b
