@@ -215,7 +215,7 @@ def train_model(model, optimizer, pseudo_optimizer, lr_scheduler, pseu_lr_schedu
 
                     Pseudo_set = []
 
-                    # base on the results of last epoch's test accuracy
+                    # base on the results of last epoch's accuracy
 
                     confid_threshold = 1 / (1 + np.exp(-3*epoch_acc))
 
